@@ -5,6 +5,6 @@ import 'package:store_m44/routes/route_names.dart';
 
 class Routes {
   static appRoutes()=>[
-    GetPage(name: RouteNames.home, page:()=>const Home(),binding: HomeBidings())
+    GetPage(name: RouteNames.home, page:()=>Home(),binding: HomeBidings())
   ];
 }
