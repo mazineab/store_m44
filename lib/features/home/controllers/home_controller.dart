@@ -15,7 +15,6 @@ class HomeController extends GetxController{
     var list=await productRepositories.loadData(catgeoryName);
     listPrdByCategory.assignAll(list.map((e)=>Product.fromJson(e)).toList());
     update();
-
   }
 
   Future<void> loadMostPop()async{
