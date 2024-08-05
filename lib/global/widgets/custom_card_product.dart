@@ -19,7 +19,7 @@ class CustomCardProduct extends StatelessWidget{
         child:Padding(
             padding: const EdgeInsets.all(10),
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Center(
@@ -30,20 +30,22 @@ class CustomCardProduct extends StatelessWidget{
                           image:CachedNetworkImageProvider(url)
                       )
                     ),
-                    // child: CachedNetworkImage(
-                    //   imageUrl: url,
-                    // ),
                   ),
                 ),
-                Text(desc,style: const TextStyle(fontSize:18),textAlign: TextAlign.start),
+                Text(desc,style: const TextStyle(fontSize:18),maxLines: 2,textAlign: TextAlign.start),
                 Row(
                   children: [
                     Flexible(child: Text(title,style: const TextStyle(color: Colors.grey),maxLines: 1,overflow: TextOverflow.ellipsis,)),const SizedBox(width:1),
                     const Icon(Icons.verified,size: 15,color:MyColors.blue,)
                   ],
-                ),
+                ),const SizedBox(height: 5),
 
-                Text("${price.trim()} DH",style: const TextStyle(color:MyColors.blue,fontSize: 16))
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Expanded(child: Text("${price.trim()} DH",style: const TextStyle(color:MyColors.blue,fontSize: 16))),
+                  ],
+                )
               ],
             ),
           ),

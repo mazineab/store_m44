@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:store_m44/common/navigation/bottomn_navigation/bottom_navigation.dart';
 import 'package:store_m44/core/utils/my_color.dart';
 import 'package:store_m44/data/models/product.dart';
 import 'package:store_m44/features/home/controllers/home_controller.dart';
@@ -8,30 +9,16 @@ import 'package:store_m44/global/widgets/custom_card_product.dart';
 import 'package:store_m44/global/widgets/search_widget.dart';
 
 class Home extends StatelessWidget {
-  const Home({super.key});
+  Home({super.key});
+
+  HomeController homeController=Get.put(HomeController());
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(title: "Home"),
       backgroundColor:MyColors.bgColor,
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor:MyColors.bgColor,
-        items: const [
-          BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-              label: "home"
-          ),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.view_headline),
-              label: "category"
-          ),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.shopping_cart_rounded),
-              label: "card"
-          )
-        ],
-      ),
+      bottomNavigationBar:const BottomNavigation(),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -44,11 +31,11 @@ class Home extends StatelessWidget {
               const SizedBox(height: 10),
               SearchWidget(),
               const SizedBox(height: 5),
-              const Row(
+              Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text("Cetgories",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 17)),
-                  Text("View all",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 17))
+                  const Text("Cetgories",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 17)),
+                  viewAll(()=>homeController.goToCategories())
                 ],
               ),const SizedBox(height: 5),
               SizedBox(
@@ -123,6 +110,12 @@ class Home extends StatelessWidget {
           ),
         ),
       )
+    );
+  }
+  Widget viewAll(onTap){
+    return GestureDetector(
+      onTap: onTap,
+      child: const Text("View all",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 17)),
     );
   }
 }

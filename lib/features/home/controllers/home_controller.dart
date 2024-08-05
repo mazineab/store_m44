@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 import 'package:store_m44/core/utils/constant.dart';
 import 'package:store_m44/data/models/product.dart';
 import 'package:store_m44/data/repositories/product_repositories.dart';
+import 'package:store_m44/routes/routes_names.dart';
 
 class HomeController extends GetxController{
   ProductRepositories productRepositories=Get.find<ProductRepositories>();
@@ -10,7 +11,7 @@ class HomeController extends GetxController{
   var listMdPrc=<Product>[].obs;
   var isload=true.obs;
 
-  Future<void> loadCategory(String catgeoryName)async{
+  Future<void> loadCategoryProducts(String catgeoryName)async{
     var list=await productRepositories.loadData(catgeoryName);
     listPrdByCategory.assignAll(list.map((e)=>Product.fromJson(e)).toList());
     update();
@@ -31,12 +32,17 @@ class HomeController extends GetxController{
     update();
   }
 
+  
+  goToCategories(){
+    Get.toNamed(RoutesNames.categories);
+  }
+
 
 
   @override
   void onInit() {
     super.onInit();
-    loadCategory("luminaires");
+    loadCategoryProducts("luminaires");
     loadMostPop();
   }
 }
