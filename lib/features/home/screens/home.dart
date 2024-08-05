@@ -18,7 +18,7 @@ class Home extends StatelessWidget {
     return Scaffold(
       appBar: CustomAppBar(title: "Home"),
       backgroundColor:MyColors.bgColor,
-      bottomNavigationBar:const BottomNavigation(),
+      // bottomNavigationBar:const BottomNavigation(),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -39,7 +39,7 @@ class Home extends StatelessWidget {
                 ],
               ),const SizedBox(height: 5),
               SizedBox(
-                height: 250,
+                height: 270,
                 child: GetBuilder<HomeController>(
                     init: HomeController(),
                     builder: (controller){
@@ -48,7 +48,7 @@ class Home extends StatelessWidget {
                           itemCount: controller.listPrdByCategory.length,
                           itemBuilder: (context,index){
                             Product prd=controller.listPrdByCategory[index];
-                            return CustomCardProduct(url:prd.imgSrc, title:prd.nameBrand, desc:prd.description, price:prd.prix);
+                            return CustomCardProduct(product: prd,);
                           }
                       );
                     }
@@ -62,7 +62,7 @@ class Home extends StatelessWidget {
                 ],
               ),const SizedBox(height: 5),
               SizedBox(
-                height: 250,
+                height: 270,
                 child: GetBuilder<HomeController>(
                     builder: (controller){
                       controller.listPrd.shuffle();
@@ -74,7 +74,7 @@ class Home extends StatelessWidget {
                           itemCount: controller.listPrd.length,
                           itemBuilder: (context,index){
                             Product prd=controller.listPrd[index];
-                            return CustomCardProduct(url:prd.imgSrc, title:prd.nameBrand, desc:prd.description, price:prd.prix);
+                            return CustomCardProduct(product: prd,);
                           },
                         );
                       }
@@ -91,7 +91,7 @@ class Home extends StatelessWidget {
                 ],
               ),const SizedBox(height: 5),
               SizedBox(
-                height: 250,
+                height: 270,
                 child: GetBuilder<HomeController>(
                     builder: (controller){
                       controller.listMdPrc.shuffle();
@@ -100,7 +100,7 @@ class Home extends StatelessWidget {
                           itemCount:controller.listMdPrc.length,
                           itemBuilder:(context,index){
                             Product prd=controller.listMdPrc[index];
-                            return CustomCardProduct(url:prd.imgSrc, title:prd.nameBrand, desc:prd.description, price:prd.prix);
+                            return CustomCardProduct(product: prd,);
                           }
                       );
                     }

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:store_m44/common/navigation/bottomn_navigation/bottom_navigation.dart';
 import 'package:store_m44/core/utils/constant.dart';
 import 'package:store_m44/core/utils/my_color.dart';
 import 'package:store_m44/features/home/controllers/categories_page_controller.dart';
@@ -14,7 +13,7 @@ class CategoriesPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: MyColors.bgColor,
       appBar: CustomAppBar(title: "Categories"),
-      bottomNavigationBar: const BottomNavigation(),
+      // bottomNavigationBar: const BottomNavigation(),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -30,7 +29,7 @@ class CategoriesPage extends StatelessWidget {
                     ),
                     itemCount: controller.listCategories.length,
                     itemBuilder: (context, index) {
-                      return customCategory(controller.listCategories[index],Constant.listIcon[index]);
+                      return customCategory(controller.listCategories[index],Constant.listIcon[index],controller);
                     },
                   ),
                 );
@@ -42,11 +41,9 @@ class CategoriesPage extends StatelessWidget {
     );
   }
 
-  Widget customCategory(String title,IconData icondt) {
+  Widget customCategory(String title,IconData icondt,controller) {
     return GestureDetector(
-      onTap: (){
-
-      },
+      onTap:()=>controller.toDetailCategory(title),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
