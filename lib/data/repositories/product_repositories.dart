@@ -10,8 +10,13 @@ class ProductRepositories{
     String jsondata=await _loadService.loadAsset();
     var parseData=jsonDecode(jsondata)[category] as List;
     return parseData;
-    // listPrd.clear();
-    // listPrd.addAll(parseData.map((e)=>Product.fromJson(e)).toList());
+  }
+
+  Future<List<dynamic>> loadCategories()async{
+    String jsonData=await _loadService.loadAsset();
+    var parseData=jsonDecode(jsonData) as Map<String,dynamic>;
+    List<String> listCategories=parseData.keys.toList();
+    return listCategories;
   }
 
 
