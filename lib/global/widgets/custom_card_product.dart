@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:store_m44/core/utils/my_color.dart';
@@ -18,6 +19,7 @@ class CustomCardProduct extends StatelessWidget{
         child:Padding(
             padding: const EdgeInsets.all(10),
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Center(
@@ -25,15 +27,18 @@ class CustomCardProduct extends StatelessWidget{
                     height: 120,width: 140,
                     decoration:BoxDecoration(
                       image: DecorationImage(
-                          image:NetworkImage(url)
+                          image:CachedNetworkImageProvider(url)
                       )
                     ),
+                    // child: CachedNetworkImage(
+                    //   imageUrl: url,
+                    // ),
                   ),
                 ),
                 Text(desc,style: const TextStyle(fontSize:18),textAlign: TextAlign.start),
                 Row(
                   children: [
-                    Text(title,style: const TextStyle(color: Colors.grey)),const SizedBox(width:2),
+                    Flexible(child: Text(title,style: const TextStyle(color: Colors.grey),maxLines: 1,overflow: TextOverflow.ellipsis,)),const SizedBox(width:1),
                     const Icon(Icons.verified,size: 15,color:MyColors.blue,)
                   ],
                 ),
