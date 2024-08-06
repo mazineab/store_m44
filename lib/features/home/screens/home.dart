@@ -4,6 +4,8 @@ import 'package:store_m44/common/navigation/bottomn_navigation/bottom_navigation
 import 'package:store_m44/core/utils/my_color.dart';
 import 'package:store_m44/data/models/product.dart';
 import 'package:store_m44/features/home/controllers/home_controller.dart';
+import 'package:store_m44/features/home/screens/story_screen.dart';
+import 'package:store_m44/features/home/screens/tiktok_screen.dart';
 import 'package:store_m44/global/widgets/custom_app_bar.dart';
 import 'package:store_m44/global/widgets/custom_card_product.dart';
 import 'package:store_m44/global/widgets/search_widget.dart';
@@ -54,11 +56,11 @@ class Home extends StatelessWidget {
                     }
                 ),
               ),
-              const Row(
+              Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text("Must populaire",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 17)),
-                  Text("View all",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 17))
+                  const Text("Must populaire",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 17)),
+                  viewAll(()=>Get.to(StoryProductScreen(products:homeController.listPrd,)))
                 ],
               ),const SizedBox(height: 5),
               SizedBox(
@@ -83,11 +85,12 @@ class Home extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 10),
-              const Row(
+              Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text("Medium Priced",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 17)),
-                  Text("View all",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 17))
+                  // Text("View all",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 17))
+                  viewAll(()=>Get.to(TiktokScreen(list:homeController.listMdPrc,)))
                 ],
               ),const SizedBox(height: 5),
               SizedBox(
