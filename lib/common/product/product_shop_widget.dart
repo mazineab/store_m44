@@ -4,16 +4,16 @@ import 'package:get/get.dart';
 import 'package:store_m44/common/product/product_shop_widget_controller.dart';
 import 'package:store_m44/core/utils/my_color.dart';
 import 'package:store_m44/data/models/product.dart';
+import 'package:store_m44/features/home/controllers/card_page_controller.dart';
 
 class ProductShopWidget extends StatelessWidget{
   Product product;
   ProductShopWidget({super.key, required this.product});
 
   ProductShopWidgetController controller =Get.put(ProductShopWidgetController());
-  // ProductShopWidgetController controller=ProductShopWidgetController();
+  final cardController =Get.find<CardPageController>();
   @override
   Widget build(BuildContext context) {
-    var index=1.obs;
     return Container(
       height: 80,
       margin: const EdgeInsets.symmetric(horizontal: 20,vertical: 5),
@@ -75,7 +75,8 @@ class ProductShopWidget extends StatelessWidget{
                                   ),
                                   child: IconButton(
                                     onPressed: (){
-                                      index.value=controller.increment(index.value);
+                                      product.countItem=controller.increment(product.countItem);
+                                      cardController.countAllPrice();
                                     },
                                     icon:const Icon(Icons.add,size:13),
                                     padding: EdgeInsets.zero,
@@ -83,7 +84,7 @@ class ProductShopWidget extends StatelessWidget{
                             },
 
                           ),
-                          Obx(()=>Text("${index.value}",style: TextStyle(fontWeight: FontWeight.bold),)) ,
+                          GetBuilder<ProductShopWidgetController>(builder: (controller)=>Text("${product.countItem}",style: TextStyle(fontWeight: FontWeight.bold),)) ,
                           GetBuilder<ProductShopWidgetController>(
                             builder: (controller){
                               return Container(
@@ -94,7 +95,8 @@ class ProductShopWidget extends StatelessWidget{
                                       borderRadius: BorderRadius.circular(2)
                                   ),
                                   child: IconButton(onPressed: (){
-                                    index.value=controller.decrement(index.value);
+                                    product.countItem=controller.decrement(product.countItem);
+                                    cardController.countAllPrice();
                                   }, icon:const Icon(Icons.remove,size:13),
                                     padding: EdgeInsets.zero,
                                   ));
