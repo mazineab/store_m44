@@ -3,6 +3,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:store_m44/features/home/controllers/card_page_controller.dart';
 import 'package:store_m44/global/widgets/custom_app_bar.dart';
 import 'package:store_m44/global/widgets/product_detail_widget.dart';
 
@@ -13,9 +14,10 @@ class StoryProductScreen extends StatelessWidget {
   List<Product> products;
   StoryProductScreen({super.key,required this.products});
 
+  CardPageController controller=Get.put(CardPageController());
+
   @override
   Widget build(BuildContext context) {
-    print(products.length);
     return CupertinoPageScaffold(
         backgroundColor:Colors.grey,
         navigationBar:const CupertinoNavigationBar(
@@ -33,6 +35,13 @@ class StoryProductScreen extends StatelessWidget {
               child: AppinioSwiper(
                 onEnd:()=>Get.offNamed("/"),
                 cardCount: products.length,
+                controller: AppinioSwiperController(),
+                swipeOptions: const SwipeOptions.only(left:true,right: true),
+                onSwipeEnd: (int index, int lastIndex,SwiperActivity swiper) {
+                  if(swiper.direction==AxisDirection.left){
+                    controller.addToCart(products[index]);
+                  }
+                },
                 cardBuilder: (BuildContext context, int index) {
                   Product product=products[index];
                   return Card(
