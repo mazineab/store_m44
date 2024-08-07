@@ -1,12 +1,16 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:store_m44/data/models/product.dart';
+import 'package:store_m44/features/home/controllers/card_page_controller.dart';
 
 import '../../core/utils/my_color.dart';
 
 class ProductDetailWidget extends StatelessWidget {
   Product product;
   ProductDetailWidget({super.key,required this.product});
+
+  CardPageController controller=Get.put(CardPageController());
 
   @override
   Widget build(BuildContext context) {
@@ -76,18 +80,24 @@ class ProductDetailWidget extends StatelessWidget {
             ],
           ),
         ),
-        ElevatedButton(
-          onPressed: (){},
-          style: ButtonStyle(
-              backgroundColor:const WidgetStatePropertyAll(MyColors.blue),
-              foregroundColor: const WidgetStatePropertyAll(Colors.white),
-              shape: WidgetStatePropertyAll<RoundedRectangleBorder>(
-                  RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8)
-                  )
-              )
+        Container(
+          margin: const EdgeInsets.symmetric(horizontal: 40),
+          width: double.infinity,
+          child: ElevatedButton(
+            onPressed: (){
+              controller.addToCart(product);
+            },
+            style: ButtonStyle(
+                backgroundColor:const WidgetStatePropertyAll(MyColors.blue),
+                foregroundColor: const WidgetStatePropertyAll(Colors.white),
+                shape: WidgetStatePropertyAll<RoundedRectangleBorder>(
+                    RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8)
+                    )
+                )
+            ),
+            child:const Text("Add to cart"),
           ),
-          child:const Text("Add to cart"),
         )
       ],
     );

@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:store_m44/core/utils/my_color.dart';
+import 'package:store_m44/features/home/controllers/card_page_controller.dart';
 import 'package:store_m44/features/home/screens/product_detail.dart';
 
 import '../../data/models/product.dart';
@@ -12,6 +13,8 @@ class CustomCardProduct extends StatelessWidget{
   // CustomCardProduct({required this.url,required this.title,required this.desc,required this.price});
   Product product;
   CustomCardProduct({super.key, required this.product});
+
+  CardPageController cardPageController=Get.put(CardPageController());
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -50,7 +53,9 @@ class CustomCardProduct extends StatelessWidget{
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Expanded(child:Text("${product.prix.trim()} DH",style: const TextStyle(color:MyColors.blue,fontSize: 16))),
-                    IconButton(icon: Icon(Icons.add_circle,color:MyColors.categoryBg,),onPressed: (){},)
+                    IconButton(icon: Icon(Icons.add_circle,color:MyColors.categoryBg,),onPressed: (){
+                      cardPageController.addToCart(product);
+                    })
                   ],
                 )
                 ,
