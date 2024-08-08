@@ -6,6 +6,7 @@ import '../../../data/repositories/product_repositories.dart';
 
 class SearchScreenController extends GetxController{
   ProductRepositories productRepositories=Get.find<ProductRepositories>();
+  var filterList=<Product>[].obs;
   var listProduct=<Product>[].obs;
   var isload=true.obs;
 
@@ -17,17 +18,24 @@ class SearchScreenController extends GetxController{
       listProduct.addAll(list);
     });
     await Future.delayed(const Duration(seconds:5));
-    isload.value=true;
+    isload.value=false;
     update();
   }
 
-  searchProduct(){
-
+  searchProduct(String word,String category){
+    if(category=="description"){
+      filterList.assignAll(listProduct.where((e)=>e.description.toLowerCase().contains(word.toLowerCase())));
+    }
+    else if(category=="nameBrand"){
+    filterList.assignAll(listProduct.where((e)=>e.nameBrand.toLowerCase().contains(word.toLowerCase())));
+    }
+    update();
   }
 
   @override
-  void onInit() {
+  void onInit()async{
     super.onInit();
-    loadAllProduct();
+    await loadAllProduct();
+    filterList.assignAll(listProduct);
   }
 }
