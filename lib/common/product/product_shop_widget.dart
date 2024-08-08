@@ -8,7 +8,8 @@ import 'package:store_m44/features/home/controllers/card_page_controller.dart';
 
 class ProductShopWidget extends StatelessWidget{
   Product product;
-  ProductShopWidget({super.key, required this.product});
+  bool isSearch;
+  ProductShopWidget({super.key, required this.product,this.isSearch=false});
 
   ProductShopWidgetController controller =Get.put(ProductShopWidgetController());
   final cardController =Get.find<CardPageController>();
@@ -54,6 +55,7 @@ class ProductShopWidget extends StatelessWidget{
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text("${product.prix} DH",style: const TextStyle(fontWeight: FontWeight.bold)),
+                    !isSearch?
                     Container(
                       margin:const EdgeInsets.symmetric(horizontal:10),
                       height: 33,
@@ -104,7 +106,7 @@ class ProductShopWidget extends StatelessWidget{
                           )
                         ],
                       ),
-                    )
+                    ):Container()
                   ],
                 )
               ],
