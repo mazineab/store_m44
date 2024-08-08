@@ -3,8 +3,9 @@ class Product{
   String nameBrand,description,imgSrc;
   String prix;
   List<dynamic>? optionsImg;
+  late int countItem;
 
-  Product({required this.id,required this.nameBrand,required this.description,required this.imgSrc, required this.prix,this.optionsImg});
+  Product({required this.id,required this.nameBrand,required this.description,required this.imgSrc, required this.prix,this.optionsImg,this.countItem=1});
 
   factory Product.fromJson(Map<String,dynamic> data){
     return Product(
@@ -26,5 +27,10 @@ class Product{
       'prix':product.prix,
       'optionsImg':product.optionsImg
     };
+  }
+
+  @override
+  String toString() {
+    return 'Product{id: $id, description: $description, prix: $prix, countItem: $countItem}';
   }
 }

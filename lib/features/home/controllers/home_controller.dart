@@ -26,7 +26,7 @@ class HomeController extends GetxController{
       listPrd.addAll(list.take(3));
       listMdPrc.addAll(list.where((e)=>int.parse(e.prix.replaceAll(" ",""))<2500));
     });
-    await Future.delayed(const Duration(seconds:5));
+    await Future.delayed(const Duration(seconds:6));
     isload.value=false;
     update();
   }
