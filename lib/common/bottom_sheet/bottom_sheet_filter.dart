@@ -25,25 +25,20 @@ class BottomSheetFilter extends StatelessWidget {
                   title: Text('Brand name'),
                   value: 'Brand name',
                   groupValue: controller.selectSearch.value,
-                  onChanged: (value) {
-                    controller.chnageSearch(value!);
-                  },
+                  onChanged: (value) =>controller.chnageSearch(value!)
+
                 ),
                 RadioListTile<String>(
                   title: Text('Description'),
                   value: 'Description',
                   groupValue:controller.selectSearch.value,
-                  onChanged: (value) {
-                    controller.chnageSearch(value!);
-                  },
+                  onChanged: (value) =>controller.chnageSearch(value!)
                 ),
                 RadioListTile<String>(
                   title: Text('Price'),
                     value: 'Price',
                     groupValue: controller.selectSearch.value,
-                    onChanged: (value){
-                      controller.chnageSearch(value!);
-                    }
+                    onChanged:(value) =>controller.chnageSearch(value!)
                 ),
                 textTitle("Category"),const SizedBox(height:10),
                 Container(
@@ -64,20 +59,24 @@ class BottomSheetFilter extends StatelessWidget {
                         );
                       }).toList(),
                       onChanged: (val){
-                        controller.category=val;
-                        print(controller.category);
+                        controller.category.value=val!;
+                        print(controller.category.value);
                       }
                   ),
                 ),
                 const SizedBox(height:10),
                 textTitle("Sort by"),
+                RadioListTile(
+                    title: Text("Default"),
+                    value: "Default",
+                    groupValue: controller.selectSort.value,
+                    onChanged: (value)=>controller.changeSort(value!)
+                ),
                 RadioListTile<String>(
                   title: Text('Price'),
                   value: 'Price',
                   groupValue:controller.selectSort.value,
-                  onChanged: (value) {
-                    controller.changeSort(value!);
-                  },
+                  onChanged: (value)=>controller.changeSort(value!)
                 ),
                 RadioListTile<String>(
                   title: Text('Description'),
@@ -91,9 +90,7 @@ class BottomSheetFilter extends StatelessWidget {
                   title: Text('Brand name'),
                   value: 'Brand name',
                   groupValue:controller.selectSort.value,
-                  onChanged: (value) {
-                    controller.changeSort(value!);
-                  },
+                  onChanged: (value)=>controller.changeSort(value!)
                 ),
               ],
             ),
