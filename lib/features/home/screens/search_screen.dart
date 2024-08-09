@@ -23,13 +23,14 @@ class SearchScreen extends StatelessWidget {
             Container(
               margin: const EdgeInsets.symmetric(horizontal:20),
                 child: SearchWidget(
-                  fun: (word)=>controller.searchProduct(word, ""),
                   onTap:()=> showModalBottomSheet(
-                    context: context,
-                    builder: (context){
-                      return const BottomSheetFilter();
-                    }
+                      context: context,
+                      builder: (context){
+                        return const BottomSheetFilter();
+                      }
                   ),
+                  fun: (word)=>controller.searchProduct(word, ""),
+
                 )
             ),
             if(controller.isload.value)

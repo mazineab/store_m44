@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:store_m44/common/bottom_sheet/bottom_sheet_filter_controller.dart';
 import 'package:store_m44/data/models/product.dart';
 
 import '../../../core/utils/constant.dart';
@@ -6,6 +7,7 @@ import '../../../data/repositories/product_repositories.dart';
 
 class SearchScreenController extends GetxController{
   ProductRepositories productRepositories=Get.find<ProductRepositories>();
+  BottomSheetFilterController controller=Get.put(BottomSheetFilterController());
   var filterList=<Product>[].obs;
   var listProduct=<Product>[].obs;
   var isload=true.obs;
@@ -23,10 +25,11 @@ class SearchScreenController extends GetxController{
   }
 
   searchProduct(String word,String category){
-    if(category=="description"){
+    var seachBy=controller.selectSearch;
+    if(seachBy.value=="Description"){
       filterList.assignAll(listProduct.where((e)=>e.description.toLowerCase().contains(word.toLowerCase())));
     }
-    else if(category=="nameBrand"){
+    else if(seachBy.value=="Brand name"){
     filterList.assignAll(listProduct.where((e)=>e.nameBrand.toLowerCase().contains(word.toLowerCase())));
     }
     update();

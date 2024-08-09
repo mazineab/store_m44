@@ -1,10 +1,17 @@
 import 'package:get/get.dart';
 
 class BottomSheetFilterController extends GetxController{
-  var selectedOtion=" brand name".obs;
+  var selectSearch=" brand name".obs;
+  var selectSort="default".obs;
+  String?category;
 
-  chnage(String val){
-    selectedOtion.value=val;
+  chnageSearch(String val){
+    selectSearch.value=val;
+    update();
+  }
+
+  changeSort(String val){
+    selectSort.value=val;
     update();
   }
 }
