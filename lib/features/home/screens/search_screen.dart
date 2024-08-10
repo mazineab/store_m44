@@ -6,6 +6,7 @@ import 'package:store_m44/data/models/product.dart';
 import 'package:store_m44/common/bottom_sheet/bottom_sheet_filter.dart';
 import 'package:store_m44/global/widgets/custom_app_bar.dart';
 import 'package:store_m44/global/widgets/search_widget.dart';
+import 'package:store_m44/global/widgets/skeleton_loading_vertical.dart';
 import '../controllers/search_controller.dart';
 
 class SearchScreen extends StatelessWidget {
@@ -29,12 +30,17 @@ class SearchScreen extends StatelessWidget {
                         return const BottomSheetFilter();
                       }
                   ),
-                  fun: (word)=>controller.searchProduct(word, ""),
-
+                  fun: (word){
+                    controller.word.value=word;
+                    print(controller.word.value);
+                    controller.searchProduct();
+                  }
                 )
             ),
             if(controller.isload.value)
-              const Expanded(child:Center(child: CircularProgressIndicator())),
+              Expanded(child: SkeletonLoadingVertical()),
+            if(controller.filterList.isEmpty)
+              Expanded(child: Center(child: Text("Product non trove"))),
             if(!controller.isload.value)
             Expanded(
                 child: ListView.builder(

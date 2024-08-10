@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 
 class BottomSheetFilterController extends GetxController{
-  var selectSearch=" brand name".obs;
+  var selectSearch="Brand name".obs;
   var selectSort="Default".obs;
   var category="All".obs;
 

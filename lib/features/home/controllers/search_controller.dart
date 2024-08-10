@@ -11,6 +11,7 @@ class SearchScreenController extends GetxController{
   var filterList=<Product>[].obs;
   var listProduct=<Product>[].obs;
   var isload=true.obs;
+  var word="".obs;
 
 
   Future<void> loadAllProduct()async{
@@ -22,14 +23,12 @@ class SearchScreenController extends GetxController{
     });
     await Future.delayed(const Duration(seconds:5));
     isload.value=false;
-    sortListOfProducts();
     update();
   }
 
   Future<void> loadProductsByCategory(String category)async{
       var list=await productRepositories.loadData(category);
       listProduct.assignAll(list.map((e)=>Product.fromJson(e)).toList());
-      sortListOfProducts();
       update();
   }
 
@@ -43,22 +42,24 @@ class SearchScreenController extends GetxController{
     }
     filterList.assignAll(listProduct);
     isload.value = false;
+    searchProduct();
+    sortListOfProducts();
     update();
 
   }
 
-  searchProduct(String word,String category){
-    var seachBy=controller.selectSearch;
-    print(seachBy);
-    if(seachBy.value=="Description"){
-      filterList.assignAll(listProduct.where((e)=>e.description.toLowerCase().contains(word.toLowerCase())));
+  searchProduct(){
+    var searchBy=controller.selectSearch;
+    if(searchBy.value=="Description"){
+      filterList.assignAll(listProduct.where((e)=>e.description.toLowerCase().contains(word.value.toLowerCase())));
     }
-    else if(seachBy.value=="Brand name"){
-     filterList.assignAll(listProduct.where((e)=>e.nameBrand.toLowerCase().contains(word.toLowerCase())));
+    else if(searchBy.value=="Brand name"){
+     filterList.assignAll(listProduct.where((e)=>e.nameBrand.toLowerCase().contains(word.value.toLowerCase())));
     }
-    else if(seachBy.value=="Price"){
-      filterList.assignAll(listProduct.where((e)=>e.prix.replaceAll(" ","").toLowerCase().contains(word.toLowerCase())));
+    else if(searchBy.value=="Price"){
+      filterList.assignAll(listProduct.where((e)=>e.prix.replaceAll(" ","").toLowerCase().contains(word.value.toLowerCase())));
     }
+    sortListOfProducts();
     update();
   }
 
@@ -73,9 +74,9 @@ class SearchScreenController extends GetxController{
     }else if(sortBy.value=="Brand name"){
       filterList.sort((a, b) => a.nameBrand.compareTo(b.nameBrand));
     }
-    else{
-      filterList.assignAll(listProduct);
-    }
+    // else{
+    //   filterList.assignAll(listProduct);
+    // }
     update();
   }
 
@@ -88,6 +89,7 @@ class SearchScreenController extends GetxController{
     super.onInit();
     ever(controller.category,(_)=>loadProducts());
     ever(controller.selectSort, (_) => sortListOfProducts());
+    // ever(word, (_)=>sortListOfProducts());
     loadProducts();
     // filterList.assignAll(listProduct);
   }

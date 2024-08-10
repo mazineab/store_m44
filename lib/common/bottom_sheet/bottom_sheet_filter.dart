@@ -51,10 +51,10 @@ class BottomSheetFilter extends StatelessWidget {
                         borderRadius: BorderRadius.circular(5)
                       )
                     ),
-                    hint: const Text("All"),
+                    hint: Text("All"==controller.category.value?"All":controller.category.value),
                       items: Constant.list.map((e){
                         return DropdownMenuItem(
-                          value: e,
+                            value: e,
                             child:Text(e)
                         );
                       }).toList(),
