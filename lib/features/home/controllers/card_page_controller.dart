@@ -10,18 +10,10 @@ class CardPageController extends GetxController{
   addToCart(Product prd){
     productAdd.add(prd);
   }
-
-  // getProduct(){
-  //   if(productAdd.isEmpty){
-  //     message.value="Empty card";
-  //   }
-  //   else{
-  //     message.value="";
-  //   }
-  //   Future.delayed(Duration(seconds: 1));
-  //   isload.value=false;
-  //   update();
-  // }
+  removeItem(Product prd){
+    productAdd.remove(prd);
+    update();
+  }
 
   countAllPrice(){
     sum.value=0;

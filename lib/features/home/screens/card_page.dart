@@ -23,13 +23,28 @@ class CardPage extends StatelessWidget {
             if (controller.message.isNotEmpty) {
               return Center(child: Text(controller.message.value));
             }
+            if (controller.productAdd.isEmpty)
+              return Center(child: Text("Emtpty card"));
             return Stack(
               children: [
                 ListView.builder(
                     itemCount: controller.productAdd.length,
                     itemBuilder: (context, index) {
                       Product product = controller.productAdd[index];
-                      return ProductShopWidget(product: product);
+                      return Dismissible(
+                          key: Key(product.id.toString()),
+                          background: Container(
+                            color: Colors.red, // Background color when swiping
+                            alignment: Alignment.centerRight,
+                            padding: EdgeInsets.symmetric(horizontal: 20),
+                            child: Icon(Icons.delete, color: Colors.white),
+                          ),
+                          direction: DismissDirection.endToStart,
+                          onDismissed: (direction) {
+                            controller.removeItem(product);
+
+                          },
+                          child: ProductShopWidget(product: product));
                     }),
                 Align(
                   alignment: Alignment.bottomCenter,
