@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:store_m44/core/utils/text_content.dart';
 import 'package:store_m44/data/models/product.dart';
 import 'package:store_m44/features/home/controllers/card_page_controller.dart';
 
@@ -22,7 +23,7 @@ class ProductDetailWidget extends StatelessWidget {
           decoration: BoxDecoration(
             image: DecorationImage(
               image: CachedNetworkImageProvider(product.imgSrc),
-              fit: BoxFit.fill, // Changed to cover to maintain aspect ratio
+              fit: BoxFit.fill,
             ),
           ),
         ),
@@ -96,7 +97,7 @@ class ProductDetailWidget extends StatelessWidget {
                     )
                 )
             ),
-            child:const Text("Add to cart"),
+            child:const Text(TextContent.ajt),
           ),
         )
       ],

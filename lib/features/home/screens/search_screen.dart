@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:store_m44/common/product/product_shop_widget.dart';
 import 'package:store_m44/core/utils/my_color.dart';
+import 'package:store_m44/core/utils/text_content.dart';
 import 'package:store_m44/data/models/product.dart';
 import 'package:store_m44/common/bottom_sheet/bottom_sheet_filter.dart';
 import 'package:store_m44/global/widgets/custom_app_bar.dart';
@@ -15,7 +16,7 @@ class SearchScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(title:"Search"),
+      appBar: CustomAppBar(title:TextContent.rechercher),
       backgroundColor: MyColors.bgColor,
       body: GetBuilder<SearchScreenController>(
           init: SearchScreenController(),
@@ -39,8 +40,8 @@ class SearchScreen extends StatelessWidget {
             ),
             if(controller.isload.value)
               Expanded(child: SkeletonLoadingVertical()),
-            if(controller.filterList.isEmpty)
-              Expanded(child: Center(child: Text("Product non trove"))),
+            if(!controller.isload.value && controller.filterList.isEmpty)
+              Expanded(child: Center(child: Text(TextContent.aucun))),
             if(!controller.isload.value)
             Expanded(
                 child: ListView.builder(

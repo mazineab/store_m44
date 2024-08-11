@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:store_m44/core/utils/text_content.dart';
 import 'package:store_m44/global/widgets/custom_app_bar.dart';
 import 'package:store_m44/global/widgets/product_detail_widget.dart';
 import 'package:tiktoklikescroller/tiktoklikescroller.dart';
@@ -16,7 +17,7 @@ class TiktokScreen extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: CustomAppBar(title: "Products"),
+      appBar: CustomAppBar(title: TextContent.prds),
       body: TikTokStyleFullPageScroller(
         contentSize: list.length,
         swipePositionThreshold: 0.2,
@@ -25,7 +26,7 @@ class TiktokScreen extends StatelessWidget {
         controller: controller,
         builder: (context, index) {
           if (index >= list.length) {
-            return Center(child: Text('No more products'));
+            return Center(child: Text(TextContent.aucPrd));
           }
           Product product = list[index];
           return ProductDetailWidget(product: product);

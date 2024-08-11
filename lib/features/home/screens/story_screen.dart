@@ -3,10 +3,8 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:store_m44/core/utils/text_content.dart';
 import 'package:store_m44/features/home/controllers/card_page_controller.dart';
-import 'package:store_m44/global/widgets/custom_app_bar.dart';
-import 'package:store_m44/global/widgets/product_detail_widget.dart';
-
 import '../../../core/utils/my_color.dart';
 import '../../../data/models/product.dart';
 
@@ -21,7 +19,7 @@ class StoryProductScreen extends StatelessWidget {
     return CupertinoPageScaffold(
         backgroundColor:Colors.grey,
         navigationBar:const CupertinoNavigationBar(
-        middle: Text('Product Stories'),
+        middle: Text(TextContent.gls),
          ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

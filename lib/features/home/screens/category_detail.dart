@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:store_m44/core/utils/my_color.dart';
+import 'package:store_m44/core/utils/text_content.dart';
 import 'package:store_m44/data/models/product.dart';
 import 'package:store_m44/features/home/controllers/category_detail_controller.dart';
 import 'package:store_m44/global/widgets/custom_app_bar.dart';
@@ -14,7 +15,7 @@ class CategoryDetail extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: MyColors.bgColor,
-      appBar: CustomAppBar(title: "products of $name"),
+      appBar: CustomAppBar(title: "${TextContent.prdDe} $name"),
       body: GetBuilder<CategoryDetailController>(
         init: CategoryDetailController()..nameCat.value=name,
         builder: (controller){

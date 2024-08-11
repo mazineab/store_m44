@@ -41,7 +41,7 @@ class HomeController extends GetxController{
   @override
   void onInit() {
     super.onInit();
-    loadCategoryProducts("luminaires");
+    loadCategoryProducts("décoration");
     loadMostPop();
   }
 }

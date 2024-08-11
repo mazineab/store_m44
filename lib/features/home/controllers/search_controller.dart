@@ -35,7 +35,7 @@ class SearchScreenController extends GetxController{
   Future<void> loadProducts()async{
     isload.value = true;
     listProduct.clear();
-    if(controller.category.value!="All"){
+    if(controller.category.value!="tout"){
       await loadProductsByCategory(controller.category.value);
     }else{
       await loadAllProduct();
@@ -70,13 +70,11 @@ class SearchScreenController extends GetxController{
       filterList.sort((a,b)=> parsePrice(a.prix).compareTo(parsePrice(b.prix)));
     }
     else if(sortBy.value=="Description"){
-      filterList.sort((a, b) => a.description.compareTo(b.description));
+      print("Before sorting: ${filterList.map((e) => e.description).toList()}");
+      filterList.sort((a, b) => a.description.trim().toLowerCase().compareTo(b.description.trim().toLowerCase()));
     }else if(sortBy.value=="Brand name"){
       filterList.sort((a, b) => a.nameBrand.compareTo(b.nameBrand));
     }
-    // else{
-    //   filterList.assignAll(listProduct);
-    // }
     update();
   }
 
@@ -89,8 +87,6 @@ class SearchScreenController extends GetxController{
     super.onInit();
     ever(controller.category,(_)=>loadProducts());
     ever(controller.selectSort, (_) => sortListOfProducts());
-    // ever(word, (_)=>sortListOfProducts());
     loadProducts();
-    // filterList.assignAll(listProduct);
   }
 }

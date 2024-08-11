@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:store_m44/core/utils/constant.dart';
 import 'package:store_m44/core/utils/my_color.dart';
+import 'package:store_m44/core/utils/text_content.dart';
 import 'package:store_m44/features/home/controllers/categories_page_controller.dart';
 import 'package:store_m44/global/widgets/custom_app_bar.dart';
 
@@ -12,7 +13,7 @@ class CategoriesPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: MyColors.bgColor,
-      appBar: CustomAppBar(title: "Categories"),
+      appBar: CustomAppBar(title: TextContent.cat),
       // bottomNavigationBar: const BottomNavigation(),
       body: Center(
         child: Column(
@@ -52,10 +53,11 @@ class CategoriesPage extends StatelessWidget {
             height: 60,
             width: 60,
             decoration: BoxDecoration(
-              color: MyColors.categoryBg,
+              // color: MyColors.categoryBg,
+              color: Colors.white.withOpacity(0.8),
               borderRadius: BorderRadius.circular(50),
             ),
-            child: Center(child: Icon(icondt, color: Colors.white)),
+            child: Center(child: Icon(icondt, color:MyColors.blue)),
           ),
           Text(title[0].toUpperCase() + title.substring(1)),
         ],

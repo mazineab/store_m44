@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 import 'package:store_m44/core/utils/my_color.dart';
+import 'package:store_m44/core/utils/text_content.dart';
 import 'package:store_m44/data/models/product.dart';
 import 'package:store_m44/features/home/controllers/home_controller.dart';
 import 'package:store_m44/features/home/screens/story_screen.dart';
@@ -18,26 +19,25 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: CustomAppBar(title: "Home"),
+        appBar: CustomAppBar(title:TextContent.accueil),
         backgroundColor: MyColors.bgColor,
-        // bottomNavigationBar:const BottomNavigation(),
         body: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
             child: Column(
               children: [
                 Container(
-                    margin: const EdgeInsets.only(right: 80),
-                    child: const Text("Quality goods,waiting for you to choose",
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 25))),
+                  width: double.infinity,
+                  child: const Text(TextContent.wlc,
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold, fontSize: 25),textAlign: TextAlign.start,),
+                ),
                 const SizedBox(height: 10),
-                // SearchWidget(),
                 const SizedBox(height: 5),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const Text("Cetgories",
+                    const Text(TextContent.cat,
                         style: TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 17)),
                     viewAll(() => homeController.goToCategories())
@@ -68,7 +68,7 @@ class Home extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const Text("Must populaire",
+                    const Text(TextContent.populaire,
                         style: TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 17)),
                     viewAll(() => Get.to(StoryProductScreen(
@@ -101,7 +101,7 @@ class Home extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const Text("Medium Priced",
+                    const Text(TextContent.prx,
                         style: TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 17)),
                     // Text("View all",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 17))
@@ -139,7 +139,7 @@ class Home extends StatelessWidget {
   Widget viewAll(onTap) {
     return GestureDetector(
       onTap: onTap,
-      child: const Text("View all",
+      child: const Text("Voir tout",
           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17)),
     );
   }

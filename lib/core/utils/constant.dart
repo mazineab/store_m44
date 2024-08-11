@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:icons_plus/icons_plus.dart';
 
+// flutter run -d edge --web-renderer html
 
 class Constant{
-  static const List<String> list=["canape","tables","lits","chaises","buffets","armoires","ilots","luminaires","decoration"];
+  static const List<String> list=["canapé","tables","lits","chaises","buffets","armoires","ilots","luminaires","décoration"];
   static const List<IconData> listIcon=[
     BoxIcons.bx_bed,
     Icons.table_restaurant,
@@ -16,3 +17,6 @@ class Constant{
     Icons.other_houses
   ];
 }
+
+
+//2 ndiro count prix d ga3 products checkout page fuha cart pay

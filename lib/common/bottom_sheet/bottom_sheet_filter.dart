@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:store_m44/common/bottom_sheet/bottom_sheet_filter_controller.dart';
 import 'package:store_m44/core/utils/constant.dart';
+import 'package:store_m44/core/utils/text_content.dart';
 
 class BottomSheetFilter extends StatelessWidget {
   const BottomSheetFilter({super.key});
@@ -20,27 +21,27 @@ class BottomSheetFilter extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                textTitle("search by"),
+                textTitle(TextContent.rechercherPar),
                 RadioListTile<String>(
-                  title: Text('Brand name'),
+                  title: Text(TextContent.marque),
                   value: 'Brand name',
                   groupValue: controller.selectSearch.value,
                   onChanged: (value) =>controller.chnageSearch(value!)
 
                 ),
                 RadioListTile<String>(
-                  title: Text('Description'),
+                  title: Text(TextContent.desc),
                   value: 'Description',
                   groupValue:controller.selectSearch.value,
                   onChanged: (value) =>controller.chnageSearch(value!)
                 ),
                 RadioListTile<String>(
-                  title: Text('Price'),
+                  title: Text(TextContent.prix),
                     value: 'Price',
                     groupValue: controller.selectSearch.value,
                     onChanged:(value) =>controller.chnageSearch(value!)
                 ),
-                textTitle("Category"),const SizedBox(height:10),
+                textTitle("Catégorie"),const SizedBox(height:10),
                 Container(
                   margin: const EdgeInsets.symmetric(horizontal:10),
                   width: double.infinity,
@@ -51,7 +52,7 @@ class BottomSheetFilter extends StatelessWidget {
                         borderRadius: BorderRadius.circular(5)
                       )
                     ),
-                    hint: Text("All"==controller.category.value?"All":controller.category.value),
+                    hint: Text(TextContent.tout==controller.category.value?TextContent.tout:controller.category.value),
                       items: Constant.list.map((e){
                         return DropdownMenuItem(
                             value: e,
@@ -65,21 +66,21 @@ class BottomSheetFilter extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height:10),
-                textTitle("Sort by"),
+                textTitle(TextContent.tr),
                 RadioListTile(
-                    title: Text("Default"),
+                    title: Text(TextContent.prDf),
                     value: "Default",
                     groupValue: controller.selectSort.value,
                     onChanged: (value)=>controller.changeSort(value!)
                 ),
                 RadioListTile<String>(
-                  title: Text('Price'),
+                  title: Text(TextContent.prix),
                   value: 'Price',
                   groupValue:controller.selectSort.value,
                   onChanged: (value)=>controller.changeSort(value!)
                 ),
                 RadioListTile<String>(
-                  title: Text('Description'),
+                  title: Text(TextContent.desc),
                   value: 'Description',
                   groupValue:controller.selectSort.value,
                   onChanged: (value) {
@@ -87,7 +88,7 @@ class BottomSheetFilter extends StatelessWidget {
                   },
                 ),
                 RadioListTile<String>(
-                  title: Text('Brand name'),
+                  title: Text(TextContent.marque),
                   value: 'Brand name',
                   groupValue:controller.selectSort.value,
                   onChanged: (value)=>controller.changeSort(value!)
