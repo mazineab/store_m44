@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:store_m44/common/product/product_shop_widget.dart';
 import 'package:store_m44/core/utils/my_color.dart';
+import 'package:store_m44/core/utils/text_content.dart';
 import 'package:store_m44/data/models/product.dart';
 import 'package:store_m44/features/home/controllers/card_page_controller.dart';
 import 'package:store_m44/global/widgets/custom_app_bar.dart';
@@ -13,18 +14,15 @@ class CardPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: MyColors.bgColor,
-        appBar: CustomAppBar(title: "Card"),
+        appBar: CustomAppBar(title: TextContent.panier),
         body: GetBuilder<CardPageController>(
           init: CardPageController(),
           builder: (controller) {
             if (controller.isload.value) {
               return const Center(child: CircularProgressIndicator());
             }
-            if (controller.message.isNotEmpty) {
-              return Center(child: Text(controller.message.value));
-            }
             if (controller.productAdd.isEmpty)
-              return Center(child: Text("Emtpty card"));
+              return Center(child: Text(TextContent.empt));
             return Stack(
               children: [
                 ListView.builder(
@@ -71,7 +69,7 @@ class CardPage extends StatelessWidget {
                               text: "${controller.sum.value}DH",
                               style:
                                   const TextStyle(fontWeight: FontWeight.bold),
-                              children: const [TextSpan(text: " Checkout")]),
+                              children: const [TextSpan(text: " ${TextContent.cmd}")]),
                         )),
                   ),
                 ),
