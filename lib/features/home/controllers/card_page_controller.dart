@@ -50,6 +50,12 @@ class CardPageController extends GetxController{
     update();
   }
 
+  clearCart()async{
+    productAdd.clear();
+    await sharedPrefManager.clearAll();
+    update();
+  }
+
   PageController pageController=PageController();
 
 

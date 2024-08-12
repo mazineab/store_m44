@@ -42,6 +42,7 @@ class ProductDetailWidget extends StatelessWidget {
                       child: Text(
                         product.description,
                         style: const TextStyle(fontSize: 25),
+                        maxLines: 2,
                       ),
                     ),
                     Row(

@@ -31,7 +31,7 @@ class StoryProductScreen extends StatelessWidget {
                   .size
                   .height * 0.85,
               child: AppinioSwiper(
-                onEnd:()=>Get.offNamed("/"),
+                onEnd:()=>Get.back(),
                 cardCount: products.length,
                 controller: AppinioSwiperController(),
                 swipeOptions: const SwipeOptions.only(left:true,right: true),

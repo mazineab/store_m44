@@ -23,6 +23,10 @@ class TextContent{
   static const String gls="Glissez pour ajouter au panier";
   static const String prds="produits";
   static const String aucPrd="Aucun produit supplémentaire";
+  static const String success="success";
+  static const String errCnx="Erreur de connexion";
+  static const String actv="Activez la connexion pour voir les images";
+  static const String endCeckout="Commande terminée avec succès ! Merci d'avoir testé mon application.";
 
 
 }

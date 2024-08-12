@@ -3,9 +3,9 @@ import 'package:get/get.dart';
 import 'package:quickalert/models/quickalert_type.dart';
 import 'package:quickalert/widgets/quickalert_dialog.dart';
 import 'package:store_m44/core/utils/constant.dart';
+import 'package:store_m44/core/utils/text_content.dart';
 import 'package:store_m44/data/models/product.dart';
 import 'package:store_m44/data/repositories/product_repositories.dart';
-import 'package:store_m44/global/widgets/no_connection_alert.dart';
 import 'package:store_m44/routes/routes_names.dart';
 import 'package:internet_connection_checker_plus/internet_connection_checker_plus.dart';
 
@@ -42,36 +42,15 @@ class HomeController extends GetxController {
     Get.toNamed(RoutesNames.categories);
   }
 
-  // void check(BuildContext context) async {
-  //   bool result = await InternetConnection().hasInternetAccess;
-  //   print("result $result");
-  //   if (!result) {
-  //     showDialog(
-  //       context: context,
-  //       builder: (context) {
-  //         return NoConnectionAlertDialog(
-  //           title: "Error connection",
-  //           message: "Turn on connection to enable see images",
-  //           onRetry: () {
-  //             Get.back();
-  //             check(context);
-  //           },
-  //         );
-  //       },
-  //     );
-  //   }
-  //   update();
-  // }
 
   void check(BuildContext context) async {
     bool result = await InternetConnection().hasInternetAccess;
-    print("result $result");
     if (!result) {
       QuickAlert.show(
         context: context,
         type: QuickAlertType.error,
-        title: 'Error connection',
-        text: 'Turn on connection to enable see images',
+        title: TextContent.errCnx,
+        text: TextContent.actv,
         confirmBtnText: 'OK',
         onConfirmBtnTap: () {
           Get.back();

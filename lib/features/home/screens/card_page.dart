@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:quickalert/models/quickalert_type.dart';
+import 'package:quickalert/widgets/quickalert_dialog.dart';
 import 'package:store_m44/common/product/product_shop_widget.dart';
 import 'package:store_m44/core/utils/my_color.dart';
 import 'package:store_m44/core/utils/text_content.dart';
@@ -22,7 +24,10 @@ class CardPage extends StatelessWidget {
               return const Center(child: CircularProgressIndicator());
             }
             if (controller.productAdd.isEmpty)
-              return Center(child: Text(TextContent.empt));
+              return Center(child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 10),
+                child: Text(TextContent.empt,textAlign: TextAlign.center,style: TextStyle(fontSize: 17),),
+              ));
             return Stack(
               children: [
                 ListView.builder(
@@ -40,7 +45,6 @@ class CardPage extends StatelessWidget {
                           direction: DismissDirection.endToStart,
                           onDismissed: (direction) {
                             controller.removeItem(product);
-
                           },
                           child: ProductShopWidget(product: product));
                     }),
@@ -52,7 +56,13 @@ class CardPage extends StatelessWidget {
                     width: double.infinity,
                     child: ElevatedButton(
                         onPressed: () {
-                          // controller.addToCart(product);
+                          QuickAlert.show(
+                            context: context,
+                            type: QuickAlertType.success,
+                            title: TextContent.success,
+                            text: TextContent.endCeckout,
+                          );
+                          controller.clearCart();
                         },
                         style: ButtonStyle(
                             backgroundColor:
