@@ -23,6 +23,19 @@ class SharedPrefManager extends GetxService{
     return prefs.getString(key);
   }
 
+  Future<bool> saveBool(String key,bool value)async{
+    try{
+      await preferences.setBool(key, value);
+      return true;
+    }catch(e){
+      return false;
+    }
+  }
+
+  bool? getSavedBool(String key) {
+    return preferences.getBool(key);
+  }
+
   Future<bool> remove(String key)async{
     try{
       await preferences.remove(key);

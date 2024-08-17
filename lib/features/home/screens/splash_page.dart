@@ -10,15 +10,15 @@ class SplashPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: MyColors.bgColor,
+      backgroundColor:Colors.black,
+      // backgroundColor:MyColors.categoryBg,
       body: GetBuilder<SplashController>(
         init: SplashController(),
         builder:(controller){
           return Center(
             child: Container(
-              width: 150,height: 150,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
+              width: 400,height:400,
+              decoration: const BoxDecoration(
                   image: DecorationImage(
                       image:AssetImage("assets/images/playstore.png")
                   )

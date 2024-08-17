@@ -5,8 +5,8 @@ import 'package:store_m44/core/utils/my_color.dart';
 import 'package:store_m44/core/utils/text_content.dart';
 import 'package:store_m44/data/models/product.dart';
 import 'package:store_m44/features/home/controllers/home_controller.dart';
-import 'package:store_m44/features/home/screens/story_screen.dart';
-import 'package:store_m44/features/home/screens/tiktok_screen.dart';
+import 'package:store_m44/features/home/screens/swipe_screen.dart';
+import 'package:store_m44/features/home/screens/scroll_screen.dart';
 import 'package:store_m44/global/widgets/custom_app_bar.dart';
 import 'package:store_m44/global/widgets/custom_card_product.dart';
 import 'package:store_m44/global/widgets/skeleton_loading_horizontal.dart';
@@ -30,7 +30,7 @@ class Home extends StatelessWidget {
                   width: double.infinity,
                   child: const Text(TextContent.wlc,
                       style: TextStyle(
-                          fontWeight: FontWeight.bold, fontSize: 25),textAlign: TextAlign.start,),
+                          fontWeight: FontWeight.bold, fontSize: 22),textAlign: TextAlign.start,),
                 ),
                 const SizedBox(height: 10),
                 const SizedBox(height: 5),

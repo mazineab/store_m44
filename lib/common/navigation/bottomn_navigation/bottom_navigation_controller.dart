@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
-import 'package:store_m44/features/home/controllers/card_page_controller.dart';
-import 'package:store_m44/features/home/screens/card_page.dart';
+import 'package:store_m44/features/home/controllers/cart_page_controller.dart';
+import 'package:store_m44/features/home/screens/cart_page.dart';
 import 'package:store_m44/features/home/screens/categories_page.dart';
 import 'package:store_m44/features/home/screens/home.dart';
 
@@ -12,7 +12,7 @@ class BottomNavigationController extends GetxController{
   final List pages=[
     Home(),
     const CategoriesPage(),
-    const CardPage()
+    const CartPage()
   ];
 
   onTapItem(int index){

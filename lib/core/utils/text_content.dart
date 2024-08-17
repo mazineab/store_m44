@@ -1,6 +1,6 @@
 class TextContent{
   static const String accueil="Accueil";
-  static const String wlc="Meubles de maison de qualité,\nvous attendent pour être choisis";
+  static const String wlc="Meubles de maison de qualité, vous attendent pour être choisis";
   static const String cat="Catégories";
   static const String view="Voir tout";
   static const String populaire="Les plus populaires";
@@ -27,6 +27,9 @@ class TextContent{
   static const String errCnx="Erreur de connexion";
   static const String actv="Activez la connexion pour voir les images";
   static const String endCeckout="Commande terminée avec succès ! Merci d'avoir testé mon application.";
+  static const String info="information";
+  static const String infoSwip="Ajouter le produit au panier en balayant vers la droite et le rejeter en balayant vers la gauche.";
+  static const String infoScroll="Glissez vers le bas pour explorer nos produits.";
 
 
 }
