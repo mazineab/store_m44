@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 import 'package:store_m44/core/utils/my_color.dart';
-import 'package:store_m44/features/home/controllers/card_page_controller.dart';
+import 'package:store_m44/features/home/controllers/cart_page_controller.dart';
 import 'package:store_m44/features/home/screens/product_detail.dart';
 
 import '../../data/models/product.dart';
@@ -59,40 +59,48 @@ class CustomCardProduct extends StatelessWidget {
                     style: const TextStyle(fontSize: 17),
                     maxLines: 2,
                     textAlign: TextAlign.start),
-                Row(
-                  children: [
-                    Flexible(
-                        child: Text(
-                      product.nameBrand,
-                      style: const TextStyle(color: Colors.grey),
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                    )),
-                    const SizedBox(width: 1),
-                    const Icon(
-                      Icons.verified,
-                      size: 15,
-                      color: MyColors.blue,
-                    )
-                  ],
+                SizedBox(height: 20,
+                  child: Row(
+                    children: [
+                      Flexible(
+                          child: Text(
+                        product.nameBrand,
+                        style: const TextStyle(color: Colors.grey),
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                      )),
+                      const SizedBox(width: 1),
+                      const Icon(
+                        Icons.verified,
+                        size: 15,
+                        color: MyColors.blue,
+                      )
+                    ],
+                  ),
                 ),
                 const SizedBox(height: 5),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Expanded(
-                        child: Text("${product.prix.trim()} DH",
-                            style: const TextStyle(
-                                color: MyColors.blue, fontSize: 16))),
-                    IconButton(
-                        icon: Icon(
-                          Icons.add_circle,
-                          color: MyColors.categoryBg,
-                        ),
-                        onPressed: () {
-                          cardPageController.addToCart(product);
-                        })
-                  ],
+                SizedBox(
+                  height: 30,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Expanded(
+                          child: Text("${product.prix.trim()} DH",
+                              style: const TextStyle(
+                                  color: MyColors.blue, fontSize: 16))),
+                      IconButton(
+                          splashColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
+                          hoverColor:Colors.transparent,
+                          icon: Icon(
+                            Icons.add_circle,
+                            color: MyColors.categoryBg,
+                          ),
+                          onPressed: () {
+                            cardPageController.addToCart(product);
+                          })
+                    ],
+                  ),
                 ),
               ],
             ),

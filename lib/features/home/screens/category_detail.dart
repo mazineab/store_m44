@@ -27,8 +27,7 @@ class CategoryDetail extends StatelessWidget {
             child: GridView.builder(
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
-                  childAspectRatio: 0.63,
-                  crossAxisSpacing: 10,
+                    childAspectRatio:0.62
                 ),
                 itemCount: controller.listProducts.length,
                 itemBuilder: (context,index){

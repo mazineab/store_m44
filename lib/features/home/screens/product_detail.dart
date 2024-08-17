@@ -14,9 +14,9 @@ class ProductDetail extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(title: TextContent.dtl),
-      backgroundColor:Colors.white,
-      body: ProductDetailWidget(product: product)
-    );
+        resizeToAvoidBottomInset: false,
+        appBar: CustomAppBar(title: TextContent.dtl),
+        backgroundColor: Colors.white,
+        body: ProductDetailWidget(product: product));
   }
 }

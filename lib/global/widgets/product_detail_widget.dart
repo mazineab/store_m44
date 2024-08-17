@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:store_m44/core/utils/text_content.dart';
 import 'package:store_m44/data/models/product.dart';
-import 'package:store_m44/features/home/controllers/card_page_controller.dart';
+import 'package:store_m44/features/home/controllers/cart_page_controller.dart';
 
 import '../../core/utils/my_color.dart';
 
@@ -19,7 +19,7 @@ class ProductDetailWidget extends StatelessWidget {
       children: [
         Container(
           width: double.infinity,
-          height: 300,
+          height:MediaQuery.of(context).size.height*0.4,
           decoration: BoxDecoration(
             image: DecorationImage(
               image: CachedNetworkImageProvider(product.imgSrc),
@@ -27,7 +27,7 @@ class ProductDetailWidget extends StatelessWidget {
             ),
           ),
         ),
-        // Product Details
+        SizedBox(height:MediaQuery.of(context).size.height*0.08),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
           child: Column(
@@ -58,7 +58,7 @@ class ProductDetailWidget extends StatelessWidget {
                   ],
                 ),
               ),
-              const SizedBox(height: 20),
+              const SizedBox(height:10),
               Row(
                 children: [
                   Flexible(
@@ -82,6 +82,7 @@ class ProductDetailWidget extends StatelessWidget {
             ],
           ),
         ),
+        const Spacer(),
         Container(
           margin: const EdgeInsets.symmetric(horizontal: 40),
           width: double.infinity,
@@ -100,7 +101,7 @@ class ProductDetailWidget extends StatelessWidget {
             ),
             child:const Text(TextContent.ajt),
           ),
-        )
+        ),SizedBox(height: MediaQuery.of(context).size.height*0.02,)
       ],
     );
   }

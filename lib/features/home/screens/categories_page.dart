@@ -14,7 +14,6 @@ class CategoriesPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: MyColors.bgColor,
       appBar: CustomAppBar(title: TextContent.cat),
-      // bottomNavigationBar: const BottomNavigation(),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -27,6 +26,8 @@ class CategoriesPage extends StatelessWidget {
                   child: GridView.builder(
                     gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 3,
+                        crossAxisSpacing:1,
+                        childAspectRatio:0.85
                     ),
                     itemCount: controller.listCategories.length,
                     itemBuilder: (context, index) {
