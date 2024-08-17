@@ -10,6 +10,26 @@ class CardPageController extends GetxController{
   var isload=false.obs;
   var sum=0.obs;
 
+  var isFirstForSwip=false.obs;
+  var isFirstForScroll=false.obs;
+
+
+  Future<void> saveFirstSwip(bool vl) async {
+    await sharedPrefManager.saveBool("firstSwip",vl);
+  }
+
+  void loadFirstSwip() {
+    isFirstForSwip.value = sharedPrefManager.getSavedBool("firstSwip") ?? false;
+  }
+
+  Future<void> saveFirstScroll(bool vl) async {
+    await sharedPrefManager.saveBool("firstScroll",vl);
+  }
+
+  void loadFirstScroll() {
+    isFirstForScroll.value = sharedPrefManager.getSavedBool("firstScroll") ?? false;
+  }
+
   Future<void> saveList() async {
     String listStr = jsonEncode(productAdd.map((prd) => prd.toJson()).toList());
     await sharedPrefManager.saveString("products", listStr);
@@ -37,7 +57,7 @@ class CardPageController extends GetxController{
 
   getSavedList()async{
     String? savedProducts = await sharedPrefManager.getString("products");
-    List<dynamic> decodeData=jsonDecode(savedProducts??"");
+    List<dynamic> decodeData=jsonDecode(savedProducts??"[]");
     List<Product>list= decodeData.map((e)=>Product.fromJson(e as Map<String, dynamic>)).toList();
     productAdd.assignAll(list);
   }

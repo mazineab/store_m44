@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 import 'package:store_m44/data/models/product.dart';
-import 'package:store_m44/features/home/controllers/card_page_controller.dart';
+import 'package:store_m44/features/home/controllers/cart_page_controller.dart';
 
 class ProductShopWidgetController extends GetxController{
   CardPageController cardPageController=Get.find<CardPageController>();

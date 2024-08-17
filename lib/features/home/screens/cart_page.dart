@@ -6,11 +6,11 @@ import 'package:store_m44/common/product/product_shop_widget.dart';
 import 'package:store_m44/core/utils/my_color.dart';
 import 'package:store_m44/core/utils/text_content.dart';
 import 'package:store_m44/data/models/product.dart';
-import 'package:store_m44/features/home/controllers/card_page_controller.dart';
+import 'package:store_m44/features/home/controllers/cart_page_controller.dart';
 import 'package:store_m44/global/widgets/custom_app_bar.dart';
 
-class CardPage extends StatelessWidget {
-  const CardPage({super.key});
+class CartPage extends StatelessWidget {
+  const CartPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +37,7 @@ class CardPage extends StatelessWidget {
                       return Dismissible(
                           key: Key(product.id.toString()),
                           background: Container(
-                            color: Colors.red, // Background color when swiping
+                            color: Colors.red,
                             alignment: Alignment.centerRight,
                             padding: EdgeInsets.symmetric(horizontal: 20),
                             child: Icon(Icons.delete, color: Colors.white),
